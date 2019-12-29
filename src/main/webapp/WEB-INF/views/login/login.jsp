@@ -10,6 +10,9 @@
 <title>Register User</title>
 </head>
 <body>
+<a href="showregistration">Register</a>
+<a href="showlogin">Login</a>
+
 <pre>
 	<form action="login" method="POST">
 		EMAIL	:<input type="email" name="email"/>

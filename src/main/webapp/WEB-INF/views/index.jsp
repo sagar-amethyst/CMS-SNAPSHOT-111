@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="showregistration">Register</a>
+<a href="/showregistration">Register</a>
 <a href="showlogin">Login</a>
 </body>
 </html>

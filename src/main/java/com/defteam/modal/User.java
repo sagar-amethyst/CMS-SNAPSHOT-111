@@ -1,10 +1,15 @@
 package com.defteam.modal;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -27,6 +32,10 @@ public class User {
 	    
 	    @Column(name = "PASSWORD")
 		private String password ;
+
+	    @ManyToMany
+	    @JoinTable(name="user_role",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="role_id"))
+	    private Set<Role> roles;
 
 		public Long getId() {
 			return Id;
@@ -60,11 +69,27 @@ public class User {
 			this.email = email;
 		}
 
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
+		public Set<Role> getRoles() {
+			return roles;
+		}
+
+		public void setRoles(Set<Role> roles) {
+			this.roles = roles;
+		}
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+			result = prime * result + ((email == null) ? 0 : email.hashCode());
 			return result;
 		}
 
@@ -77,27 +102,21 @@ public class User {
 			if (getClass() != obj.getClass())
 				return false;
 			User other = (User) obj;
-			if (Id == null) {
-				if (other.Id != null)
+			if (email == null) {
+				if (other.email != null)
 					return false;
-			} else if (!Id.equals(other.Id))
+			} else if (!email.equals(other.email))
 				return false;
 			return true;
-		}
-
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
 		}
 
 		@Override
 		public String toString() {
 			return "User [Id=" + Id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-					+ ", password=" + password + "]";
+					+ ", password=" + password + ", roles=" + roles + "]";
 		}
+	    
+	
 	   
 }
 
