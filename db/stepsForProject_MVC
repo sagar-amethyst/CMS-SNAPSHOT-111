@@ -1,0 +1,79 @@
+
+	1.CREATE MODEL CLASS( this also called as domain class or entity class which map to db				[MODAL CLASS]
+
+	2.Next create DATA ACESS LAYER but using spring data so no need to DAO(I) ,daoImp(C) we use jpaRepository[DATA ACCESS LAYER]
+	
+	3.Configure with database connection [application.properties file] location[src/main/resource] [INTEGRATION OR CONFIGURE]
+	
+	4. Next create ServiceLayer of Service(I) with only method declaration [SERVICE LAYER]
+	
+	5. Next create ServiceImplementation(C) this class implements to Service(I) [
+	
+
+	--------------------view Purpose dynamic web page used JSP------------------[PRESENTATION LAYER]
+	
+		7.Need follow folder structure
+		
+		location [boot]
+		  > Spring Element
+		  > src/main/java
+		  > src/main/resource
+		  > src/test/java
+		  > JRE System Library[JavaSE-1.8]
+		  > MAVEN Dependencies
+		  v src
+		     | >main
+		          | >webapp
+		          		| >WEB-INF
+		               		| >jsps OR (views)
+		                    	|>locationJsp.jsp(page view)
+		                    	
+		                    	
+	 -----------------------spring traced controller to view jsp page-----------[CONTROLLER PART]
+	 
+	 
+	 8. Create Controller class [create package as eg:com.sagar.controller] inside create controller rest api
+	 9. above class have like  @Controller  for page  @RequestMapping("/pages");
+	 
+	 10. Next you have to know how to spring know that page show
+	 11.You need to configure view resolver
+	 
+	 12. write config in application.properties prefix and suffix
+	 
+	       prefix is: /WEB-INF/views/
+	       suffix is:.jsp
+	       
+	 ---------------jasper dependecy add in pom.xml-----------------
+	 
+	 13. server.context-path=/  [it's bcz spring boot start with /]from home
+	      	in springboot2: [server.servlet.contextPath=/main]
+	      	
+	     ---------------------JAVA CONTROLLER-----------------
+	   14.which is used to map our server url startup page 	
+	      	
+	 -----------------------------ModalAttribute usage-----------------------------------
+	 
+	 (ModelAttribute("location") Location loacation) ->this is our pojo class @Entity table create bean class Object we pass into db
+	 (ModelMap modelMap) ->which handles the response from URI(/saveLoc) return to controller
+	 										
+	 15.i have a .jsp page like createLocation.jsp
+	 
+	 							  note:URI which map in controller
+	 			in there   action="/saveObje"
+	 			
+	 			---------registration-------------
+	 			CREATE TABLE cmsv1.USER 
+(
+ID INT NOT NULL AUTO_INCREMENT,
+FIRST_NAME VARCHAR(50),
+LAST_NAME VARCHAR(50),
+EMAIL VARCHAR(50),
+PASSWORD VARCHAR(256), 
+PRIMARY KEY (ID),
+UNIQUE KEY (EMAIL)
+)
+	 
+	 
+		  
+	
+	

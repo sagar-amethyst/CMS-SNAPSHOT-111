@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+  	<table> 
+  	<form class="form-inline"  onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off" id="myForm">
+    <label for="First Name">First Name</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Enter firstName" name="firstName">
+
+    <label for=" Last Name">Last Name</label>
+    <input type="text" class="form-control" id="lastName" placeholder="Enter lastName" name="lastName">
+    
+    <label for="Age">Age </label>
+    <input type="text" class="form-control" id="age" placeholder="Enter age" name="age">
+    
+    
+    <button type="submit" class="btn btn-primary" >Subbmit</button>
+</form>
+</table>
+ 
+  </div>           
+  <table class="table table-dark" id="empList">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<script type="text/javascript">
+	
+//when form submit
+function onFormSubmit() {
+	var formData=readFormData();
+	console.log(formData);
+	insertNewRecord(formData);
+}
+
+//Read Form Data
+
+	function readFormData(){
+		var formData={};
+		formData["firstName"]=document.getElementById("firstName").value;
+		formData["lastName"]=document.getElementById("lastName").value;
+		formData["age"]=document.getElementById("age").value;
+		return formData;
+	}
+
+
+function insertNewRecord(data){
+	var table=document.getElementById("empList").getElementsByTagName('tbody')[0];
+												 //getElementsByTagName()
+	var newRow=table.insertRow(table.length);
+	cell1=newRow.insertCell(0);
+	cell1.innerHTML=data.firstName;
+
+	cell2=newRow.insertCell(1);
+	cell2.innerHTML=data.lastName;
+
+	cell3=newRow.insertCell(2);
+	cell3.innerHTML=data.age;
+
+	cell4=newRow.insertCell(3);
+	cell4.innerHTML='<a href="#" onClick="onEdit(this)">Edit</a>';
+
+	cell4=newRow.insertCell(4);
+	cell4.innerHTML='<a href="#">Delete<a>';
+
+	 document.getElementById("myForm").reset();
+}
+ 
+
+
+
+
+
+function onEdit(id) {
+  var id = id.parentNode.parentNode.rowIndex;
+  document.getElementById("empList").deleteRow(id);
+}
+</script>
+</body>
+</html>
