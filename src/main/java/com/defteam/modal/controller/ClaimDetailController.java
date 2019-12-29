@@ -1,10 +1,12 @@
 		package com.defteam.modal.controller;
 		
 		
-		import java.math.BigInteger;
 		import java.text.SimpleDateFormat;
 		import java.util.Date;
 		import java.util.List;
+
+		import org.slf4j.Logger;
+		import org.slf4j.LoggerFactory;
 		import org.springframework.beans.factory.annotation.Autowired;
 		import org.springframework.beans.propertyeditors.CustomDateEditor;
 		import org.springframework.format.annotation.DateTimeFormat;
@@ -16,7 +18,6 @@
 		import org.springframework.web.bind.annotation.ModelAttribute;
 		import org.springframework.web.bind.annotation.PathVariable;
 		import org.springframework.web.bind.annotation.PutMapping;
-		import org.springframework.web.bind.annotation.RequestBody;
 		import org.springframework.web.bind.annotation.RequestMapping;
 		import org.springframework.web.bind.annotation.RequestMethod;
 		import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,8 @@
 		@Controller
 		public class ClaimDetailController {
 		
+		private static final Logger LOGGER=LoggerFactory.getLogger(ClaimDetailController.class);
+			
 		 @Autowired
 		 private ClaimDetailService claimDetailService;
 		
@@ -53,6 +56,7 @@
 		 @RequestMapping(value = "/saveClaim", method = RequestMethod.POST,
 		  produces = MediaType.APPLICATION_JSON_VALUE)
 		 public String saveClaim(@ModelAttribute("claimdetail") ClaimDetail claimdetail, Model modelMap) {
+			 LOGGER.info("claim details"+claimdetail);
 		
 		
 		  System.out.println(claimdetail);
@@ -86,6 +90,7 @@
 		  @RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
 		  @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
 		  ModelMap modelMap) {
+			 LOGGER.info("claim details"+startDate+"and" +"end date"+endDate);
 		
 		  //List<ClaimDetail> claims=claimDetailRepository.findClaimDetails(empId,startDate,endDate);
 		
