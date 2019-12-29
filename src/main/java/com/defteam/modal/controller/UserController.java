@@ -19,25 +19,25 @@ import com.defteam.modal.service.SecurityService;
 public class UserController {
 
 	@Autowired
-	private SecurityService  securityService;
-	
+	private SecurityService securityService;
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	 @RequestMapping(value = "/", method = RequestMethod.GET)	
-	  public String showHome(ModelMap modeMap){
-		 return "login/login";
-	 	}
-	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String showHome(ModelMap modeMap) {
+		return "login/login";
+	}
+
 	@RequestMapping(value = "/showlogin", method = RequestMethod.GET)
 	public String showLogin() {
 		return "login/login";
 	}
 
-	@RequestMapping(value = "/showregistration", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/showregistration", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String showRegisterPage() {
 		return "/login/registerUser";
 	}
@@ -57,10 +57,9 @@ public class UserController {
 			ModelMap modelMap) {
 
 		User user = userRepository.findByEmail(email);
-		
-		boolean loginResponse=securityService.login(email, password);
-		
-		
+
+		boolean loginResponse = securityService.login(email, password);
+
 		if (loginResponse) {
 			return "redirect:displayClaimDetails";
 		} else {
@@ -69,15 +68,14 @@ public class UserController {
 			return "login/login";
 
 		}
-		
-		
-	/*	if (user.getPassword().equals(password)) {
-			return "redirect:displayClaimDetails";
-		} else {
 
-			modelMap.addAttribute("invalidMsg", "Invalid user and Password Try again..");
-		}*/
-
+		/*
+		 * if (user.getPassword().equals(password)) { return
+		 * "redirect:displayClaimDetails"; } else {
+		 * 
+		 * modelMap.addAttribute("invalidMsg",
+		 * "Invalid user and Password Try again.."); }
+		 */
 
 	}
 
