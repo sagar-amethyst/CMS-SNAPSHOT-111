@@ -56,7 +56,7 @@ public class UserController {
 	public String login(@RequestParam("email") String email, @RequestParam("password") String password,
 			ModelMap modelMap) {
 
-		//User user = userRepository.findByEmail(email);
+		User user = userRepository.findByEmail(email);
 		
 		boolean loginResponse=securityService.login(email, password);
 		
@@ -66,6 +66,8 @@ public class UserController {
 		} else {
 
 			modelMap.addAttribute("invalidMsg", "Invalid user and Password Try again..");
+			return "login/login";
+
 		}
 		
 		
@@ -76,7 +78,6 @@ public class UserController {
 			modelMap.addAttribute("invalidMsg", "Invalid user and Password Try again..");
 		}*/
 
-		return "login/login";
 
 	}
 
