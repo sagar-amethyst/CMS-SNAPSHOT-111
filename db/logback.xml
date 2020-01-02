@@ -1,0 +1,22 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<property name="DIR_LOG" value="/Eclipse_Workspace/eclipse-mars/work-space/CMS0.4-SNOPSHOT-181220191111/temp/log"/>
+<property name="FILE_PREFIX" value="cmslog"/>
+<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<file>${DIR_LOG}/${FILE_PREFIX}.log</file>
+<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
+<pattern>%d{yyyy-MM-dd HH:mm:ss}-%{msg}</pattern>
+<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+<fileNamePattern>${DIR_LOG}/archive/${FILE_PREFIX}.%d{yyyy-MM-dd HH:mm:ss}</fileNamePattern>
+<timeBasedFileNamingAndTriggerPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+<maxFileSize>10MB</maxFileSize>
+</timeBasedFileNamingAndTriggerPolicy>
+</rollingPolicy>
+
+</appender>
+<root level="info">
+<appender-ref ref="FILE"/>
+</root>
+
+</configuration> -->
